@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
+
+</head>
+
+<body>
+
+
+    <div id="app" class="container">
+        <input v-model="textBox" placeholder="Enter a Location...">
+        <div>
+            <div id="map" class="map"></div>
+        </div>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Incident</th>
+                <th>Neighborhood</th>
+                <th>Block</th>
+            </tr>
+            <tr v-for="crime of crimes" v-if="isVisible(crime.neighborhood_number)">
+                <td>{{crime.case_number}}</td>
+                <td>{{crime.date}}</td>
+                <td>{{crime.time}}</td>
+                <td>{{incidents[crime.code]}}</td>
+                <td>{{neighborhoods[crime.neighborhood_number]}}</td>
+                <td>{{crime.block}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
