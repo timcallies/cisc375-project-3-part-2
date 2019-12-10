@@ -28,9 +28,20 @@
         </div>
         <div class="form-group">
             <ul class="list-group list-group-horizontal">
-                <li href="#" class="list-group-item list-group-item-action justify-content-between d-flex" v-for="neighborhood in neighborhoods">                        
+                <li class="list-group-item list-group-item-action justify-content-between d-flex"
+                    v-for="neighborhood in neighborhoods" @click="neighborhood.selected = !neighborhood.selected">
                     {{neighborhood.name}}
-                    <i class="material-icons">check_circle</i>
+                    <i v-if="neighborhood.selected" class="material-icons">check_circle</i>
+                    <i v-else class="material-icons">radio_button_unchecked</i>
+                </li>
+            </ul>
+
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item list-group-item-action justify-content-between d-flex" v-for="code in codes"
+                    @click="code.selected = !code.selected">
+                    {{code.name}}
+                    <i v-if="code.selected" class="material-icons">check_circle</i>
+                    <i v-else class="material-icons">radio_button_unchecked</i>
                 </li>
             </ul>
         </div>
@@ -47,8 +58,8 @@
                 <td>{{incident.case_number}}</td>
                 <td>{{incident.date}}</td>
                 <td>{{incident.time}}</td>
-                <td>{{codes[incident.code].name}}</td>
-                <td>{{neighborhoods[incident.neighborhood_number].name}}</td>
+                <td v-if="(incident.code in codes)">{{codes[incident.code].name}}</td>
+                <td v-if="(incident.neighborhood_number in neighborhoods)">{{neighborhoods[incident.neighborhood_number].name}}</td>
                 <td>{{incident.block}}</td>
             </tr>
         </table>

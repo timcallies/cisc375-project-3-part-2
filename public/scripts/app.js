@@ -77,7 +77,6 @@ new Vue({
                 
             })
 
-            console.log(code_array)
         },
 
         isVisible(neighborhoodNumber) {
