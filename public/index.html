@@ -29,7 +29,7 @@
         <div class="form-group">
             <ul class="list-group list-group-horizontal">
                 <li class="list-group-item list-group-item-action justify-content-between d-flex"
-                    v-for="neighborhood in neighborhoods" @click="neighborhood.selected = !neighborhood.selected">
+                    v-for="neighborhood in neighborhoods" @click="neighborhood.selected = !neighborhood.selected; $forceUpdate()">
                     {{neighborhood.name}}
                     <i v-if="neighborhood.selected" class="material-icons">check_circle</i>
                     <i v-else class="material-icons">radio_button_unchecked</i>
@@ -38,7 +38,7 @@
 
             <ul class="list-group list-group-horizontal">
                 <li class="list-group-item list-group-item-action justify-content-between d-flex" v-for="code in codes"
-                    @click="code.selected = !code.selected">
+                    @click="code.selected = !code.selected; $forceUpdate()">
                     {{code.name}}
                     <i v-if="code.selected" class="material-icons">check_circle</i>
                     <i v-else class="material-icons">radio_button_unchecked</i>

@@ -11,87 +11,105 @@ new Vue({
 				"1": {
 						name: "Conway/Battlecreek/Highwood",
 						lat: 44.957561,
-						longi: -93.014738
+                        longi: -93.014738,
+                        selected: true
 				},
 				"2": {
 						name: "Greater East Side",
 						lat: 44.978684,
-						longi: -93.025585
+                        longi: -93.025585,
+                        selected: true
 				},
 				"3": {
 						name: "West Side",
 						lat: 44.932248,
-						longi: -93.078480
+                        longi: -93.078480,
+                        selected: true
+
 				},
 				"4": {
 						name: "Dayton's Bluff",
 						lat: 44.953880,
-						longi: -93.059761
+						longi: -93.059761,
+                        selected: true
 				},
 				"5": {
 						name: "Payne/Phalen",
 						lat: 44.978519,
-						longi: -93.067820
+						longi: -93.067820,
+                        selected: true
 				},
 				"6": {
 						name: "North End",
 						lat: 44.976247,
-						longi: -93.110111
+						longi: -93.110111,
+                        selected: true
 				},
 				"7": {
 						name: "Thomas/Dale(Frogtown)",
 						lat: 44.960728,
-						longi: -93.122988
+						longi: -93.122988,
+                        selected: true
 				},
 				"8": {
 						name: "Summit/University",
 						lat: 44.947270,
-						longi: -93.129536
+						longi: -93.129536,
+                        selected: true
 				},
 				"9": {
 						name: "West Seventh",
 						lat: 44.929166,
-						longi: -93.122487
+						longi: -93.122487,
+                        selected: true
 				},
 				"10": {
 						name: "Como",
 						lat: 44.982733,
-						longi: -93.149042
+						longi: -93.149042,
+                        selected: true
 				},
 				"11": {
 						name: "Hamline/Midway",
 						lat: 44.962563,
-						longi: -93.168578
+						longi: -93.168578,
+                        selected: true
 				},
 				"12": {
 						name: "St. Anthony",
 						lat: 44.973906,
-						longi: -93.197021
+						longi: -93.197021,
+                        selected: true
 				},
 				"13": {
 						name: "Union Park",
 						lat: 44.948719,
-						longi: -93.176632
+						longi: -93.176632,
+                        selected: true
 				},
 				"14": {
 						name: "Macalester-Groveland",
 						lat: 44.934662,
-						longi: -93.175191
+						longi: -93.175191,
+                        selected: true
 				},
 				"15": {
 						name: "Highland",
 						lat: 44.909560,
-						longi: -93.170952
+						longi: -93.170952,
+                        selected: true
 				},
 				"16": {
 						name: "Summit Hill",
 						lat: 44.936880,
-						longi: -93.138714
+						longi: -93.138714,
+                        selected: true
 				},
 				"17": {
 						name: "Capitol River",
 						lat: 44.958002,
-						longi: -93.103668
+						longi: -93.103668,
+                        selected: true
 				},
 			},
             codes: {},
