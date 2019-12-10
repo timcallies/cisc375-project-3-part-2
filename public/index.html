@@ -2,26 +2,37 @@
 <html>
 
 <head>
-	<title> St. Paul Crime </title>
+    <title> St. Paul Crime </title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
 <body>
-	<center><h1> St. Paul Crime </h1></center>
-	<center>
-		<p>
-			<b>Home</b> | <a href = "./aboutUs.html"> About the Project </a>
-		</p>
-	</center>
+    <center>
+        <h1> St. Paul Crime </h1>
+    </center>
+    <center>
+        <p>
+            <b>Home</b> | <a href="./aboutUs.html"> About the Project </a>
+        </p>
+    </center>
 
     <div id="app" class="container">
         <input v-model="textBox" placeholder="Enter a Location...">
         <div>
             <div id="map" class="map"></div>
+        </div>
+        <div class="form-group">
+            <ul class="list-group list-group-horizontal">
+                <li href="#" class="list-group-item list-group-item-action justify-content-between d-flex" v-for="neighborhood in neighborhoods">                        
+                    {{neighborhood.name}}
+                    <i class="material-icons">check_circle</i>
+                </li>
+            </ul>
         </div>
         <table>
             <tr>
@@ -32,19 +43,19 @@
                 <th>Neighborhood</th>
                 <th>Block</th>
             </tr>
-            <tr v-for="crime of crimes" v-if="isVisible(crime.neighborhood_number)">
-                <td>{{crime.case_number}}</td>
-                <td>{{crime.date}}</td>
-                <td>{{crime.time}}</td>
-                <td>{{incidents[crime.code]}}</td>
-                <td>{{neighborhoods[crime.neighborhood_number]}}</td>
-                <td>{{crime.block}}</td>
+            <tr v-for="incident of incidents" v-if="isVisible(incident.neighborhood_number)">
+                <td>{{incident.case_number}}</td>
+                <td>{{incident.date}}</td>
+                <td>{{incident.time}}</td>
+                <td>{{codes[incident.code].name}}</td>
+                <td>{{neighborhoods[incident.neighborhood_number].name}}</td>
+                <td>{{incident.block}}</td>
             </tr>
         </table>
     </div>
 
 
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
     <script src="scripts/app.js"></script>
