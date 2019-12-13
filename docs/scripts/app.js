@@ -169,6 +169,8 @@ app = new Vue({
         }
     },
     mounted() {
+        this.api_url = window.prompt("Enter the St Paul Crime URL");
+
         this.initMap();
         this.initLayers();
 
