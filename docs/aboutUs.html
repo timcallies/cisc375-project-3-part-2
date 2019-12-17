@@ -1,64 +1,88 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset= "utf-8"/>
-		<meta name = "viewport" content = "width=device-width, intial-scale = 1"/>
-		
-		<title> St. Paul Crime </title>
-		<link rel="stylesheet" href="css/style.css">
-			<link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, intial-scale = 1" />
+
+	<title> St. Paul Crime </title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
 
 
 
-	</head>
+</head>
 
-	<body>
-	<center><h1> About the Project </h1></center>
-	<center>
+<body>
+	<div class="container">
+		<h1> About the Project </h1>
 		<p>
-			<a href=" ./index.html">Home</b></a> | <b>About the Project</b> 
+			<a href=" ./index.html">Home</b></a> | <b>About the Project</b>
 		</p>
-	</center>
 
-	<br>
-	<center><h1> The Authors </h1></center></br>
-			<img src = "Tim.jpg"  alt = "Tim" width = "400px" height = "auto" />
-				<div class="name">
-					Tim Callies: I am a computer science student with an interest in computer graphics and animation.
-					Recently I have worked as an intern for the Talent Development Program at Optum.
-					I will be returning there next year for a full-time position.
-				</div>
-			<br><img src = "Rachel.jpg"  alt = "Rachel" width = "400px" height = "auto" />
-			<div class="name">Rachel Rautio
-				 Hello! I'm a current senior at the University of St. Thomas studying computer science. After graduation I will be an Officer in the United States Air Force. </div></br>
+		<br>
+		<h1> The Authors </h1>
+		<div class="row">
+			<div class="col">
+				<img src="Tim.jpg" alt="Tim" width="100%" />
+
+			</div>
+			<div class="col-10">
+				<h4>Tim Callies</h4>
+				I am a computer science student with an interest in computer graphics and animation.
+				Recently I have worked as an intern for the Talent Development Program at Optum.
+				I will be returning there next year for a full-time position.
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<img src="Rachel.jpg" alt="Rachel" width="100%" />
+			</div>
+			<div class="col-10">
+				<h4>Rachel Rautio</h4>
+				Hello! I'm a current senior at the University of St. Thomas studying computer science. After graduation
+				I will be an Officer in the United States Air Force.
+			</div>
+		</div>
 
 
-	<br><br> <center><h1> Tools Used </h1></center></br></br>
-	
-	<ul>
-			<li> Leaflet ~ Leaflet is an JavaScript library that allows developers to easily put interactive maps on their websites.</li>
-			<li> Nominatim API ~ Nominatim is an API that is used for looking up addresses or coordinates and providing information about hte location. </li>
-			<li> St. Paul Crime API ~ This is an API we developed that allows a client to look through a database of crimes that have occurred in the St. Paul area. </li>
-			<li> VueJS ~ Vue is a reactive JavaScript framework that is used to fill our table with data and apply filters in response to user input. </li>
-	</ul>
+		<h1> Tools Used </h1>
 
-	
-	<br><br> <center><h1> Video Demostration </h1></center></br></br>
-	<center><p> video goes here </p></center>
+		<ul>
+			<li> Leaflet ~ Leaflet is an JavaScript library that allows developers to easily put interactive maps on
+				their
+				websites.</li>
+			<li> Nominatim API ~ Nominatim is an API that is used for looking up addresses or coordinates and providing
+				information about hte location. </li>
+			<li> St. Paul Crime API ~ This is an API we developed that allows a client to look through a database of
+				crimes
+				that have occurred in the St. Paul area. </li>
+			<li> VueJS ~ Vue is a reactive JavaScript framework that is used to fill our table with data and apply
+				filters
+				in response to user input. </li>
+		</ul>
 
 
-	<br><br> <center><h1> Interesting Findings </h1></center></br></br>
-<ol>
+		<h1> Video Demostration </h1>
+		<p> video goes here </p>
+
+
+		<h1> Interesting Findings </h1>
+		<ol>
 			<li> Macalster-Groveland, the neighborhood housing our school, has the least amount of crime </li>
 			<li> Majority of the crimes within this data are from proactive police visits </li>
 			<li> Union Park has majority theft cases </li>
 			<li> West Seventh neighborhood has more narcotic use and assault than other neighborhoods </li>
-			<li> Payne-Phalen is the most violent neighborhood, home to majority of the highest crime classifications  </li>
-			<li> There is significantly more reported crime at 6pm than 6am, almost ten times the amount of crime compared to the morning </li>
-	</ol>
+			<li> Payne-Phalen is the most violent neighborhood, home to majority of the highest crime classifications
+			</li>
+			<li> There is significantly more reported crime at 6pm than 6am, almost ten times the amount of crime
+				compared
+				to the morning </li>
+		</ol>
+	</div>
 </body>
 
 </html>
