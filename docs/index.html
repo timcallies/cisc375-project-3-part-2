@@ -2,11 +2,15 @@
 <html>
 
 <head>
-    <style> 
+    <style>
         .no-wrap-row {
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+        }
+
+        .pointer {
+            cursor: pointer;
         }
     </style>
 
@@ -39,17 +43,48 @@
     </center>
 
     <div id="app" class="container">
-        <input v-model="textBox" placeholder="Enter a Location...">
-        <div>
-            <div id="map" class="map"></div>
+
+
+        <div class="row">
+            <div class="col-8">
+                <div id="map" class="map"></div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        Search
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="latitiude">Latitude</label>
+                            <input v-model="latitude" type="number" class="form-control" id="latitiude">
+                        </div>
+                        <div class="form-group">
+                            <label for="longitude">Longitude</label>
+                            <input v-model="longitude" type="number" class="form-control" id="longitude">
+                        </div>
+
+                        <button @click="searchByCoordinates()" type="button" class="btn btn-primary btn-block pointer">Search by Coordinates</button>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input v-model="address" type="text" class="form-control" id="address">
+                        </div>
+
+                        <button @click="searchByAddress()" type="button" class="btn btn-primary  btn-block pointer">Search by Address</button>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+
         <div class="form-group">
 
             <div class="accordion" id="accordionFilters">
                 <div class="card">
                     <div class="card-header" id="headingFilters">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button class="btn btn-link pointer" type="button" data-toggle="collapse"
                                 data-target="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
                                 Filters
                             </button>
@@ -69,21 +104,21 @@
                                             <div class="col-sm">
                                                 <div class="input-group">
                                                     <input type="number" aria-label="Year" min="1990" max="2050"
-                                                        :value="filters.start_date.y" class="form-control">
+                                                        v-model="filters.start_date.y" class="form-control">
                                                     <input type="number" aria-label="Month" min="1" max="12"
-                                                        :value="filters.start_date.m" class="form-control">
+                                                        v-model="filters.start_date.m" class="form-control">
                                                     <input type="number" aria-label="Day" min="1" max="31"
-                                                        :value="filters.start_date.d" class="form-control">
+                                                        v-model="filters.start_date.d" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-sm">
                                                 <div class="input-group">
                                                     <input type="number" aria-label="Year" min="1990" max="2050"
-                                                        :value="filters.end_date.y" class="form-control">
+                                                        v-model="filters.end_date.y" class="form-control">
                                                     <input type="number" aria-label="Month" min="1" max="12"
-                                                        :value="filters.end_date.m" class="form-control">
+                                                        v-model="filters.end_date.m" class="form-control">
                                                     <input type="number" aria-label="Day" min="1" max="31"
-                                                        :value="filters.end_date.d" class="form-control">
+                                                        v-model="filters.end_date.d" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -93,10 +128,33 @@
 
                             <div class="card">
                                 <div class="card-header">
-
+                                    Time Range
                                 </div>
                                 <div class="card-body">
-
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div class="input-group">
+                                                    <input type="number" aria-label="Hour" min="0" max="23"
+                                                        v-model="filters.start_time.h" class="form-control">
+                                                    <input type="number" aria-label="Minute" min="0" max="59"
+                                                        v-model="filters.start_time.m" class="form-control">
+                                                    <input type="number" aria-label="Second" min="0" max="56"
+                                                        v-model="filters.start_time.s" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm">
+                                                <div class="input-group">
+                                                    <input type="number" aria-label="Hour" min="0" max="23"
+                                                        v-model="filters.end_time.h" class="form-control">
+                                                    <input type="number" aria-label="Minute" min="0" max="59"
+                                                        v-model="filters.end_time.m" class="form-control">
+                                                    <input type="number" aria-label="Second" min="0" max="56"
+                                                        v-model="filters.end_time.s" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -110,17 +168,17 @@
                                             @input="neighborhoodOffset=0" placeholder="Search">
                                         <button
                                             @click="for(neighborhood of neighborhoods) {neighborhood.selected=true;}"
-                                            class="small btn btn-outline-primary">Select All</button>
+                                            class="small btn btn-outline-primary pointer">Select All</button>
                                         <button
                                             @click="for(neighborhood of neighborhoodPage) {neighborhood.selected=true;}"
-                                            class="small btn btn-outline-primary">Select Page</button>
+                                            class="small btn btn-outline-primary pointer">Select Page</button>
                                         <button
                                             @click="for(neighborhood of neighborhoods) {neighborhood.selected=false;}"
-                                            class="small btn btn-outline-secondary">Select None</button>
+                                            class="small btn btn-outline-secondary pointer">Select None</button>
                                     </div>
 
                                     <ul class="list-group list-group-horizontal">
-                                        <li class="list-group-item list-group-item-action justify-content-between py-2 d-flex"
+                                        <li class="pointer list-group-item list-group-item-action justify-content-between py-2 d-flex"
                                             v-for="neighborhood in neighborhoodPage"
                                             @click="neighborhood.selected = !neighborhood.selected">
                                             {{neighborhood.name}}
@@ -128,10 +186,10 @@
                                             <i v-else class="material-icons">radio_button_unchecked</i>
                                         </li>
                                     </ul>
-                                    <ul class="pagination justify-content-start" style="overflow-x: scroll;">
-                                        <li v-for="n in Math.ceil(neighborhoodSearch.length/10)" class="page-item"
+                                    <ul class="pagination justify-content-start pagination-sm flex-wrap">
+                                        <li v-for="n in Math.ceil(neighborhoodSearch.length/10)" class="pointer page-item"
                                             :class="{active: (n-1) == (neighborhoodOffset/10)}">
-                                            <span @click="neighborhoodOffset=(n-1)*7" class="page-link">{{n}}</span>
+                                            <span @click="neighborhoodOffset=(n-1)*10" class="page-link">{{n}}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -148,22 +206,22 @@
                                         <input type="text" class="form-control" v-model="codeQuery"
                                             @input="codeOffset=0" placeholder="Search">
                                         <button @click="for(code of codes) {code.selected=true;}"
-                                            class="small btn btn-outline-primary">Select All</button>
+                                            class="small btn btn-outline-primary pointer">Select All</button>
                                         <button @click="for(code of codePage) {code.selected=true;}"
-                                            class="small btn btn-outline-primary">Select Page</button>
+                                            class="small btn btn-outline-primary pointer">Select Page</button>
                                         <button @click="for(code of codes) {code.selected=false;}"
-                                            class="small btn btn-outline-secondary">Select None</button>
+                                            class="small btn btn-outline-secondary pointer">Select None</button>
                                     </div>
                                     <ul class="list-group list-group-horizontal">
-                                        <li class="list-group-item list-group-item-action justify-content-between py-2 d-flex"
+                                        <li class="pointer list-group-item list-group-item-action justify-content-between py-2 d-flex"  
                                             v-for="code in codePage" @click="code.selected = !code.selected">
-                                            {{code.name}}
+                                            <span :class="'text-'+code.color"> {{code.name}} </span>
                                             <i v-if="code.selected" class="material-icons">check_circle</i>
                                             <i v-else class="material-icons">radio_button_unchecked</i>
                                         </li>
                                     </ul>
-                                    <div class="pagination justify-content-start" style="overflow-x: scroll;">
-                                        <div v-for="n in Math.ceil(codeSearch.length/10)" class="page-item"
+                                    <div class="pagination justify-content-start pagination-sm flex-wrap">
+                                        <div v-for="n in Math.ceil(codeSearch.length/10)" class="pointer page-item"
                                             :class="{active: (n-1) == (codeOffset/10)}">
                                             <span @click="codeOffset=(n-1)*10" class="page-link">{{n}}</span>
                                         </div>
@@ -182,6 +240,14 @@
             </div>
 
         </div>
+
+        <div class="d-flex justify-content-between">
+            <span class="text-warning"> Personal Crimes</span>
+            <span class="text-info"> Narcotic Crimes</span>
+            <span class="text-danger"> Violent Crimes</span>
+            <span class="text-primary"> Property Crimes</span>
+            <span class="text-success"> Other</span>
+        </div>
         <table class="table small">
             <thead>
                 <tr>
@@ -194,7 +260,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr scope="row" v-for="incident of incidentPage" v-if="isVisible(incident.neighborhood_number)">
+                <tr class="pointer table-sm" @click="addToMap(incident)" :class="'table-'+incident.incident.color" scope="row" v-for="incident of incidentPage" v-if="isVisible(incident.neighborhood_number)">
                     <td class="no-wrap-row">{{incident.case_number}}</td>
                     <td class="no-wrap-row">{{incident.date}}</td>
                     <td class="no-wrap-row">{{incident.time}}</td>
@@ -205,10 +271,10 @@
             </tbody>
 
         </table>
-        <ul class="pagination justify-content-start" style="overflow-x: scroll;">
-            <li v-for="n in Math.ceil(incidents.length/15)" class="page-item"
-                :class="{active: (n-1) == (incidentOffset/15)}">
-                <span @click="incidentOffset=(n-1)*15" class="page-link">{{n}}</span>
+        <ul class="pagination justify-content-start pagination-sm flex-wrap">
+            <li v-for="n in Math.ceil(filteredIncidents.length/30)" class="page-item pointer"
+                :class="{active: (n-1) == (incidentOffset/30)}">
+                <span @click="incidentOffset=(n-1)*30" class="page-link">{{n}}</span>
             </li>
         </ul>
     </div>
