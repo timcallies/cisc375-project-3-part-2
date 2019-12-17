@@ -269,7 +269,7 @@ app = new Vue({
             console.log(this.map.getBounds());
             let output = 0;
 
-            for (incident of this.incidents) {
+            for (incident of this.filteredIncidents) {
 
                 if (incident.neighborhood_number == neighborhood.id) {
                     output = output + 1;
@@ -280,9 +280,8 @@ app = new Vue({
         },
 
         searchByCoordinates() {
-            if (this.maxBounds.contains([this.latitude, this.longitude])) {
                 this.map.setView([this.latitude, this.longitude], 14);
-            }
+            
 
         },
 
